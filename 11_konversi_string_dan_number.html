@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Konversi String dan Number</title>
+  </head>
+  <body>
+    <script>
+      //string di tambah number akan menjadi string
+      const value1 = "1"; //string 1
+      const value2 = 1; //number 1
+      const sum = value1 + value2;
+
+      document.writeln(`<p>${sum}</p>`); //string 11
+
+      document.writeln("<hr>");
+      /*
+        konversi string dan number. (function)
+        parseInt(string) = mengkonversi dari string ke number (bil bulat)
+        parseFloat(string) = mengkonversi dari string ke number (bil pecahan)
+        Number(string) = mengkonversi dari string ke number (bil bulat atau pecahan)
+        number.toString() = mengkonversi dari number ke string.
+        */
+      const nilai1 = parseInt("1"); //parseInt
+      const nilai2 = 2;
+      const jumlah = nilai1 + nilai2;
+
+      document.writeln(`<p>${jumlah}</p>`);
+
+      document.writeln("<hr>");
+
+      document.writeln(`<p>${parseInt("1.1")}</p>`); //hasil pecahan akan dihiraukan
+      document.writeln(`<p>${parseFloat("1.1")}</p>`);
+      document.writeln(`<p>${Number("1.1")}</p>`); //fleksibel bisa menjadi int atau floating
+
+      document.writeln("<hr>");
+
+      //number to string
+      const a = 1;
+      const b = 2;
+      const total = a.toString() + b.toString();
+
+      document.writeln(`<p> Total a + b = ${total}</p>`);
+
+      document.writeln("<hr>");
+
+      //NaN (Not a Number)
+      document.writeln(`<p>${parseInt("bukan number")}</p>`); //NaN
+      document.writeln(`<p>${parseFloat("1.1ade")}</p>`); //JS mentolerir jika di belakang number
+
+      document.writeln(`<p>${Number("bukan number")}</p>`); //NaN
+      document.writeln(`<p>${Number("1.1ade")}</p>`); //JS tidak mentolerir kesalahan sedikitpun
+
+      document.writeln("<hr>");
+
+      const first = Number("bukan number"); //NaN
+      const totalNumber = first + 12;
+      document.writeln(`<p> ${totalNumber} </p>`); //NaN akan tetap NaN walau di operasikan dengan bil apapun
+
+      //Cek NaN (isNaN())
+      document.writeln(`<p>apakah variable first NaN? ${isNaN(first)}</p>`);
+    </script>
+  </body>
+</html>
