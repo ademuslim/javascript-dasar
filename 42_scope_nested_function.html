@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nested Function Scope</title>
+  </head>
+  <body>
+    <script>
+      //nested function scope
+      function pertama() {
+        //local scope function pertama
+        let variabelPertama = "Pertama";
+
+        function nestedPertama() {
+          document.writeln(
+            `cetak variable function pertama : ${variabelPertama}`
+          ); //dapat mengakses local scope function pertama(variablePertama pada function di atasnya)
+          //const variabelNestedPertama = "Nested Pertama";
+        }
+        nestedPertama();
+        //console.info(variabelNestedPertama); //ERROR, tidak dapat mengakses variableNestedPertama
+      }
+
+      pertama();
+    </script>
+  </body>
+</html>

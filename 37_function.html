@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Function adalah blok kode program yang akan berjalan saat kita panggil.
+        Sebelumnya kita sudah menggunakan function writeln() untuk menampilkan
+        tulisan di html.
+        Untuk membuat function, kita bisa menggunakan kata kunci function, lalu
+        diikuti dengan nama function, kurung () dan diakhiri dengan block kurung ().
+        Di bahasa pemrograman lain, function juga disebut dengan method.
+        */ document.writeln("<h1>Function</h1>");
+
+      //membuat function (nama function tidak boleh spasi, direkomendasikan camelcase)
+      function sayHelloWorld() {
+        document.writeln("<p>Hello World</p>");
+      }
+
+      //memanggil function
+      sayHelloWorld();
+
+      sayHelloWorld();
+
+      /*
+        Function Parameter
+        Kita bisa mengirim informasi ke function yang ingin kita panggil.
+        Untuk melakukan hal tersebut, kita perlu menambahkan parameter atau argument
+        di function yang sudah kita buat.
+        Parameter ditempatkan di dalam kurung () di deklarasi method.
+        Parameter bisa lebih dari satu, jika lebih dari satu, harus dipisah menggunakan
+        tanda koma.
+        */ document.writeln("<hr> <p>Function Parameter :</p>");
+
+      //membuat function dengan parameter
+      function sayHello(firstName, lastName) {
+        //parameter mirip variable tanpa deklarasi let atau const
+        document.writeln(`<p>Hello ${firstName} ${lastName}</p>`);
+      }
+
+      //memanggil
+      sayHello("Ade", "Muslim");
+
+      /*
+        Function Return Value
+        Secara default, function itu tidak menghasilkan value apapun, namun jika kita ingin,
+        kita bisa membuat sebuah function mengembalikan value.
+        Agar function bisa menghasilkan value, kita bisa menggunakan kata kunci return di dalam
+        function nya.
+        Dan di dalam block function, untuk menghasilkan nilai tersebut, kita harus menggunakan
+        kata kunci return, lalu diikuti dengan data yang ingin kita hasilkan.
+        Function hanya bisa mengembalikan satu data, jika kita ingin mengembalikan beberapa data
+        sekaligus, kita bisa menggunakan array sebagai return value nya.
+        */ document.writeln("<hr> <p>Function Return Value :</p>");
+
+      //membuat function dengan parameter dan return value
+      function selamatDatang(nama, alamat) {
+        const say = `Selamat Datang ${nama} asal ${alamat}`;
+        return say; //mengembalikan data kedalam variable say
+      }
+
+      //memanggil function dan menangkap return value nya
+      const result = selamatDatang("Ade", "Cabangbungin");
+      document.writeln(`<p>${result}</p>`);
+
+      //function return value lebih dari satu
+      function getFinalValue(value) {
+        if (value > 90) {
+          return "A";
+        } else if (value > 80) {
+          return "B";
+        } else if (value > 70) {
+          return "C";
+        } else if (value > 60) {
+          return "D";
+        } else {
+          return "E";
+        }
+      }
+
+      //memanggil
+      const finalValue = getFinalValue(77);
+      document.writeln(
+        `<p>function return value lebih dari satu : </br>${finalValue}</p>`
+      );
+
+      /*
+        Menghentikan Eksekusi dengan Return
+        Saat kita menggunakan kata kunci return, maka kode setelah return tersebut tidak akan dieksekusi.
+        Kita bisa menggunakan return untuk menghentikan eksekusi sebuah function.
+        */ document.writeln(
+        "<hr> <p>Menghentikan Eksekusi dengan Return :</p>"
+      );
+
+      function isContains(array, searchValue) {
+        for (const element of array) {
+          console.info(`Iterasi Element ${element}`);
+          if (element === searchValue) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      //memanggil
+      const array = [1, 32, 4324, 3, 43, 53, 53, 43, 43, 535, 35, 5];
+      const search = 43;
+      const found = isContains(array, search);
+      document.writeln(`<p>${found}</p>`);
+
+      /*
+        Optional Parameter
+        Secara default, parameter di function itu optional.
+        Artinya kita tidak wajib mengisi valuenya ketika memanggil funcion.
+        Jika tidak ada value yang kita kirim ke parameter ketika memanggil function,
+        maka secara otomatis parameter tersebut bernilai undefined.
+        */ document.writeln("<hr> <p>Optional Parameter :</p>");
+
+      function sayHalo(namaDepan, namaTengah, namaBelakang) {
+        document.writeln(namaDepan);
+        document.writeln(namaTengah);
+        document.writeln(namaBelakang);
+        document.writeln("</br>");
+      }
+
+      //Memanggil
+      sayHalo(); //tanpa parameter, 3 parameter undefined dan tidak terjadi error
+
+      sayHalo("Ade"); //hanya memasukan 1 parameter
+
+      sayHalo("Ade", "Muslim", "Sairuddin");
+      sayHalo("Ade", "Muslim", "Sairuddin", "Ahmad"); //tidak terjadi error walaupun lebih dari parameter
+
+      /*
+        Default Parameter
+        Sekarang kita tahu bahwa parameter itu optional, artinya kita bisa
+        tidak memberi value terhadap parameter.
+        Parameter juga bisa kita beri default value, artinya jika ketika kita tidak mengirim data ke
+        parameter atau kita mengirim data undefined, maka secara otomatis parameter akan diisi oleh
+        default value.
+        */ document.writeln("<hr> <p>Default Parameter :</p>");
+
+      function register(name, gender = "UNKNOWN") {
+        document.writeln(`<p> Nama : ${name}</p>`);
+        document.writeln(`<p> Jenis Kelamin : ${gender}</p>`);
+
+        document.writeln("</br>");
+      }
+
+      //memanggil
+      register();
+
+      register("Ade");
+
+      register("Ade", "Laki-laki");
+
+      register("Ade", undefined);
+      register("Ade", null);
+
+      /*
+        Rest Parameter
+        Rest parameter adalah fitur dimana kita bisa mengirim data sebanyak-banyaknya pada satu
+        parameter, dan secara otomatis akan di konversi menjadi array.
+        Untuk membuat rest parameter, ada ketentuannya.
+        Rest parameter hanya boleh ada satu di function, tidak boleh lebih dari satu.
+        Rest parameter hanya boleh berada di posisi paling akhir, tidak boleh di depan atau di tengah
+        kecuali memang cuma ada 1 parameter.
+        Di bahasa pemrograman lain, ada juga yang bilang ini adalah variable argument.
+        */ document.writeln("<hr><p>Rest Parameter :</p>");
+
+      function sum(namaBuah, ...data) {
+        let total = 0;
+        for (const item of data) {
+          total += item;
+        }
+        document.writeln(`<p>Total buah ${namaBuah} berjumlah : ${total}</p>`);
+      }
+
+      //memanggil
+      sum("Jeruk", 10, 20, 10, 50, 7, 3);
+
+      /*
+        Spread Syntax
+        Kadang kita terlanjur memiliki data berupa array.
+        Tapi untungnya kita juga bisa mengirim array ke rest parameter.
+        Kita bisa menggunakan ... (titik tiga kali) diikuti dengan array nya ketika memanggil function.
+        Fitur ini di namakan Spread Syntax.
+        */ document.writeln(`<hr> <p>Spread Syntax : </p>`);
+
+      const dataApel = [10, 10, 10, 10, 10];
+      sum("Apel", ...dataApel);
+
+      /*
+        Arguments Object
+        Sebelum ada fitur rest parameter, di JS sudah ada fitur yang bernama arguments object.
+        Ini adalah fitur dimana kita bisa mengambil semua parameter dalam bentuk array dengan
+        menggunakan object bernama arguments.
+        Arguments secara otomatis bisa digunakan di function.
+        Namun perlu diingat, bahwa untuk JS saat ini, lebih baik disarankan menggunakan rest 
+        parameter dibanding arguments object.
+        */ document.writeln(`<hr> <p>Argument Object : </p>`);
+
+      function oldSum() {
+        let total = 0;
+        for (const inputData of arguments) {
+          total += inputData;
+        }
+        document.writeln(`<p>Total : ${total}</p>`);
+      }
+
+      //memanggil
+      oldSum(1, 2, 3, 4, 2);
+    </script>
+  </body>
+</html>

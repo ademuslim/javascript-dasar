@@ -16,11 +16,42 @@
       dimana urutan pertama dimulai dari nomor 0.
       Setiap kita menambahkan data ke array, otomatis data akan
       di simpan di urutan terakhir. Urutan di array disebut index.
+      Data di dalam array tidak ada batasannya harus data apa.
+      Kita bisa memasukan data apapun ke dalam array.
+      Bahkan kita juga bisa memasukkan array ke dalam array.
       */
 
       let arrayKosong = [];
 
       let arrayNama = ["Ade", "Muslim", "Sairuddin"];
+
+      //menambah data ke dalam array kosong
+      const names = [];
+      names.push("Ade");
+      names.push("Muslim", "Sairuddin", "Amanda");
+      names.push("Dinda", "Silvia");
+
+      console.table(names);
+
+      //mendapatkan panjang array
+      console.info(names.length);
+      //mendapatkan data di posisi index
+      console.info(names[0]);
+
+      //mengubah isi data di posisi index
+      names[0] = "Adi";
+      console.table(names);
+
+      //menghapus data di posisi index
+      delete names[1];
+      console.table(names);
+
+      //data di dalam array tidak ada batasannya harus data apa.
+      names.push(12, 1.2, true);
+      console.table(names);
+
+      //memasukan array ke dalam array
+      names.push(["Arsyila", "Aditya"]);
     </script>
   </body>
 </html>
