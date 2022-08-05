@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function Generator</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Function Generator
+        Function generator adalah function yang digunakan untuk membuat data generator.
+        Generator adalah data yang bisa di iterasi seperti array.
+        Untuk membuat function generator, kita perlu menggunakan tanda * (bintang) setelah kata function.
+        Dan untuk mengembalikan data di tiap iterasi, kita bisa gunakan kata kunci yield diikuti datanya.
+        */
+
+      function* createNames() {
+        yield "Ade";
+        yield "Muslim";
+        yield "Sairuddin";
+      }
+
+      console.info(createNames()); //bersifat lazy
+
+      //hanya bisa di iterasi tidak bisa di akses berupa index bahkan tidak bisa di ubah datanya.
+      const names = createNames();
+      for (const name of names) {
+        console.info(name);
+      }
+
+      //Function Generator Kompleks
+      //lazy
+      function* buatGanjil(value) {
+        for (let i = 1; i <= value; i++) {
+          if (i % 2 === 1) {
+            console.info(`Yield ${i}`);
+            yield i;
+          }
+        }
+      }
+
+      const numbers = buatGanjil(20);
+      for (const number of numbers) {
+        console.info(number);
+      }
+
+      //function bawaan generator ( .next().value ) untuk perulangan ke iterasi selanjutnya
+      function* buatGanjilTesNextValue(value) {
+        for (let i = 1; i <= value; i++) {
+          if (i % 2 === 1) {
+            console.info(`Yield next value ${i}`);
+            yield i;
+          }
+        }
+      }
+      const inputAngka = buatGanjilTesNextValue(12);
+      console.info(inputAngka.next().value); //value pertama
+      console.info(inputAngka.next().value); //value kedua
+
+      //eager
+      function buatGanjilArray(value) {
+        const result = [];
+        for (let i = 1; i <= value; i++) {
+          if (i % 2 === 1) {
+            console.info(`Yield ${i}`);
+            result.push(i);
+          }
+        }
+        return result;
+      }
+
+      const dataAngka = buatGanjilArray(20);
+      for (const angka of dataAngka) {
+        console.info(angka);
+      }
+
+      /*
+        Lazy Evaluation
+        Generator itu sifatnya lazy.
+        Jadi artinya jika datanya belum di ambil dari generator, maka yield selanjutnya tidak akan
+        di eksekusi.
+        */
+    </script>
+  </body>
+</html>

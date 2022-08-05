@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masalah Variable var</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Masalah pada Variable var
+        Penggunaan sudah tidak direkomendasikan lagi, dan diganti dengan let.
+        Alasan var tidak direkomendasikan lagi adalah, karena var tidak memiliki
+        block scope, artinya dia tidak mengikat ke local scope.
+        Karena masalah ini, var bisa tidak terprediksi.
+        */
+
+      //menggunakan kata kunci let
+      let i = 20; //global scope
+
+      for (let i = 0; i < 10; i++) {
+        //local scope
+        console.info(`local let ${i}`); // variable i di local scope = 1 sampai 9
+      }
+
+      console.info(`global let ${i}`); // variable i di global scope = 20
+
+      //menggunakan kata kunci var
+      var j = 20; //global scope
+
+      for (var j = 0; j < 10; j++) {
+        //local scope
+        console.info(`local var ${j}`); // variable j di local scope = 1 sampai 9
+      }
+
+      console.info(`global var ${j}`); // variable j di global scope berubah menjadi = 10
+
+      //saat membuat var j baru di local scope, seakan2 mengubah isi var j di global scope.
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrow Function di Object</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Arrow Function di Object
+        Arrow function juga bisa kita gunakan di object method.
+        Namun perlu diketahui, arrow function tidak bisa digunakan untuk mengakses arguments object,
+        function generator, kata kunci this dan kata kunci super (JS OOP).
+        Jadi pastikan gunakan arrow function hanya memang ketika kita tidak butuh fitur2 di atas.
+        */
+
+      // object method dengan anonymous function
+      //     const person = {
+      //     name: "Ade",
+      //     sayHello: function (name) {
+      //       //this = person
+      //       console.info(`Hi ${name}, my name is ${this.name}`); //Hi ${name (name: parameter function ) }, my name is ${this.name (this.name: name di object person) }
+      //     },
+      //   };
+
+      //   person.sayHello("Dinda");
+
+      //object method dengan arrow function
+      const person = {
+        name: "Ade",
+        sayHello: (name) => {
+          console.info(this);
+          console.info(`Hello ${name}, my name is ${this.name}`); //Hi ${name (name: parameter function ) }, my name is ${this.name (this.name: name kosong karena this mengakses window bukan name) }
+        },
+      };
+
+      person.sayHello("Dinda");
+    </script>
+  </body>
+</html>

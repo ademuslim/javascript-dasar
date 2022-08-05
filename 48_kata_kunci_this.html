@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kata Kunci This</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Kata Kunci This
+        Kata kunci this adalah referensi ke object milik siapa.
+        Tiap lokasi kata kunci this, bisa berbeda-beda referensi pemilik nya.
+        Dalam object method, this merupakan referensi ke object pemilik function nya.
+        Di global scope, this merupakan referensi ke global object (di browser biasanya Window).
+        Dalam function, this merupakan referensi ke global object (di browser biasanya Window).
+        Di function dengan strict mode, this adalah undefined.
+        Dalam event, this merupakan referensi ke element yang menerima event (dibahas di materi
+        document object meodel).
+        */
+
+      console.info(this); //window
+
+      //this di function
+      function sample() {
+        console.info(this);
+      }
+
+      sample(); //window
+
+      //this di nested function
+      function contoh() {
+        console.info(this);
+        function inner() {
+          console.info(this);
+        }
+
+        inner();
+      }
+
+      contoh(); //window
+
+      //this di object method
+      const nama = {
+        name: "Ade",
+        sayHello: function (name) {
+          console.info(this);
+        },
+      };
+
+      nama.sayHello("Adi");
+
+      const person = {
+        name: "Ade",
+        sayHello: function (name) {
+          //this = person
+          console.info(`Hi ${name}, my name is ${this.name}`); //Hi ${name (name: parameter function ) }, my name is ${this.name (this.name: name di object person) }
+        },
+      };
+
+      person.sayHello("Dinda");
+    </script>
+  </body>
+</html>
